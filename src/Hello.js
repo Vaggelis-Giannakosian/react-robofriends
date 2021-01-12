@@ -1,16 +1,13 @@
-import React, {Component} from 'react'
 import './Hello.css'
 
-class Hello extends Component {
+const Hello = (props) => {
 
-    render() {
-        return (
-            <div>
-                <h1>Hello World!</h1>
-                <p className={'tl'}>Welcome to React</p>
-            </div>
-        );
-    }
+    return (
+        <div>
+            <h1>Hello World!</h1>
+            <p className='tl'>{props.greeting}</p>
+        </div>
+    );
 
 }
 
