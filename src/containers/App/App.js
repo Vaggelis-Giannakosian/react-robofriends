@@ -15,17 +15,19 @@ const App = (props) => {
         fetch('https://jsonplaceholder.typicode.com/users')
             .then(response => response.json())
             .then(users => setRobots(users));
-    })
+    },[])
 
     function onSearchChange({target: {value}}) {
         setSearchField(value)
     }
 
-    function filterRobots() {
-        return robots.filter(robot => {
+    if (!robots.length) {
+        return (<h1>Loading...</h1>);
+    }
+
+    const filterRobots = robots.filter(robot => {
             return robot.name.toLowerCase().includes(searchField.toLowerCase())
         })
-    }
 
     return (
         <div className="tc">
@@ -33,7 +35,7 @@ const App = (props) => {
             <SearchBox searchChange={onSearchChange}/>
             <Scroll>
                 <ErrorBoundry>
-                    <CardList robots={filterRobots()}/>
+                    <CardList robots={filterRobots}/>
                 </ErrorBoundry>
             </Scroll>
         </div>
