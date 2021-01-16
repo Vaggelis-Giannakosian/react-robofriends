@@ -1,7 +1,7 @@
 // import React from "react";
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import {connect} from 'react-redux'
+// import {connect} from 'react-redux'
 import CardList from "../../components/CardList/CardList";
 import SearchBox from "../../components/SearchBox/SearchBox";
 import Scroll from '../../components/Scroll/Scroll'
@@ -61,6 +61,7 @@ import {setSearchField, requestRobots} from "../../actions";
 const App = () =>{
 
     const robosUsers = useSelector(state => state.requestRobots.robots)
+    const isPending = useSelector(state => state.requestRobots.isPending)
     const text = useSelector(state => state.searchRobots.searchField)
     const dispatch = useDispatch();
     const [searchResults, setSearchResults] = useState(robosUsers);
@@ -71,19 +72,29 @@ const App = () =>{
 
     useEffect(() =>  {
         dispatch(requestRobots());
-    }, [])
+    }, [dispatch])
 
     useEffect(() => {
-        const filteredRobots = robosUsers.filter(robot =>  robot.name.toLowerCase().includes(text.toLowerCase()));
+
+        const filteredRobots = robosUsers.length ?
+            robosUsers.filter(robot =>  robot.name.toLowerCase().includes(text.toLowerCase())) :
+            [];
+
         setSearchResults(filteredRobots);
     }, [text,robosUsers])
+
+    if ( isPending || !searchResults.length) {
+        return (<h1>Loading...</h1>);
+    }
 
     return(
         <div className="tc">
             <h1 className="f2">RoboFriends</h1>
             <SearchBox searchChange={ onSearchChange }/>
             <Scroll>
-                <CardList robots={ searchResults }/>
+                <ErrorBoundry>
+                    <CardList robots={ searchResults }/>
+                </ErrorBoundry>
             </Scroll>
         </div>
     );
