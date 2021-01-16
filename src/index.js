@@ -24,9 +24,9 @@ const enhancer = composeEnhancers(
     // other store enhancers if any
 );
 
-const rootReducer = combineReducers({searchRobots,requestRobots})
-
 // const store = createStore(searchRobots,applyMiddleware(logger))
+
+const rootReducer = combineReducers({searchRobots,requestRobots})
 const store = createStore(rootReducer, enhancer)
 
 ReactDOM.render(

@@ -1,5 +1,6 @@
-import React from "react";
-// import React, {useState, useEffect} from "react";
+// import React from "react";
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import {connect} from 'react-redux'
 import CardList from "../../components/CardList/CardList";
 import SearchBox from "../../components/SearchBox/SearchBox";
@@ -9,7 +10,13 @@ import ErrorBoundry from '../../components/ErrorBoundry'
 import './App.css'
 import {setSearchField, requestRobots} from "../../actions";
 
-// const App = (props) => {
+
+/**
+ * App Container With local state - function syntax
+ * @param props
+ */
+
+// const App =  (props)  => {
 //
 //     const [robots, setRobots] = useState([])
 //     const [searchField, setSearchField] = useState('')
@@ -45,67 +52,109 @@ import {setSearchField, requestRobots} from "../../actions";
 //     );
 // }
 
-const mapStateToProps = state => ({
-    searchField: state.searchRobots.searchField,
-    robots: state.requestRobots.robots,
-    isPending: state.requestRobots.isPending,
-    error: state.requestRobots.error,
-})
 
-const mapDispatchToProps = dispatch => {
-    return {
-        onSearchChange: event => dispatch(setSearchField(event.target.value)),
-        onRequestRobots: () => dispatch(requestRobots())
-    }
+/**
+ * App container with redux store - function syntax
+ * @param state
+ */
+
+const App = () =>{
+
+    const robosUsers = useSelector(state => state.requestRobots.robots)
+    const text = useSelector(state => state.searchRobots.searchField)
+    const dispatch = useDispatch();
+    const [searchResults, setSearchResults] = useState(robosUsers);
+
+    const onSearchChange = (e) => {
+        dispatch(setSearchField(e.target.value))
+    };
+
+    useEffect(() =>  {
+        dispatch(requestRobots());
+    }, [])
+
+    useEffect(() => {
+        const filteredRobots = robosUsers.filter(robot =>  robot.name.toLowerCase().includes(text.toLowerCase()));
+        setSearchResults(filteredRobots);
+    }, [text,robosUsers])
+
+    return(
+        <div className="tc">
+            <h1 className="f2">RoboFriends</h1>
+            <SearchBox searchChange={ onSearchChange }/>
+            <Scroll>
+                <CardList robots={ searchResults }/>
+            </Scroll>
+        </div>
+    );
 }
-
-class App extends React.Component {
-
-
-    componentWillMount = async () => {
-        // fetch('https://jsonplaceholder.typicode.com/users')
-        //     .then(response => response.json())
-        //     .then(users => this.setState({robots: users}));
-        this.props.onRequestRobots()
-    }
-
-    // onSearchChange = ({target: {value}}) => {
-    //     this.setState({
-    //         searchField: value
-    //     });
-    // }
-
-    filterRobots(robots, searchField) {
-        return robots.filter(robot => {
-            return robot.name.toLowerCase().includes(searchField.toLowerCase())
-        })
-    }
-
-    render() {
-
-        const {searchField,robots, isPending, onSearchChange} = this.props;
-
-        if ( isPending || !robots.length) {
-            return (<h1>Loading...</h1>);
-        }
-
-        const filteredRobots = this.filterRobots(robots, searchField);
-
-        return (
-            <div className="tc">
-                <h1 className="f1">RoboFriends</h1>
-                <SearchBox searchChange={onSearchChange}/>
-                <Scroll>
-                    <ErrorBoundry>
-                        <CardList robots={filteredRobots}/>
-                    </ErrorBoundry>
-                </Scroll>
-            </div>
-        );
-
-    }
-
-}
+export default App;
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+/**
+ * App container With redux store - class syntax
+ * @param state
+ */
+// const mapStateToProps = state => ({
+//     searchField: state.searchRobots.searchField,
+//     robots: state.requestRobots.robots,
+//     isPending: state.requestRobots.isPending,
+//     error: state.requestRobots.error,
+// })
+//
+// const mapDispatchToProps = dispatch => {
+//     return {
+//         onSearchChange: event => dispatch(setSearchField(event.target.value)),
+//         onRequestRobots: () => dispatch(requestRobots())
+//     }
+// }
+//
+// class App extends React.Component {
+//
+//
+//     componentWillMount = async () => {
+//         // fetch('https://jsonplaceholder.typicode.com/users')
+//         //     .then(response => response.json())
+//         //     .then(users => this.setState({robots: users}));
+//         this.props.onRequestRobots()
+//     }
+//
+//     // onSearchChange = ({target: {value}}) => {
+//     //     this.setState({
+//     //         searchField: value
+//     //     });
+//     // }
+
+//     filterRobots(robots, searchField) {
+//         return robots.filter(robot => {
+//             return robot.name.toLowerCase().includes(searchField.toLowerCase())
+//         })
+//     }
+//
+//     render() {
+//
+//         const {searchField,robots, isPending, onSearchChange} = this.props;
+//
+//         if ( isPending || !robots.length) {
+//             return (<h1>Loading...</h1>);
+//         }
+//
+//         const filteredRobots = this.filterRobots(robots, searchField);
+//
+//         return (
+//             <div className="tc">
+//                 <h1 className="f1">RoboFriends</h1>
+//                 <SearchBox searchChange={onSearchChange}/>
+//                 <Scroll>
+//                     <ErrorBoundry>
+//                         <CardList robots={filteredRobots}/>
+//                     </ErrorBoundry>
+//                 </Scroll>
+//             </div>
+//         );
+//
+//     }
+//
+// }
+
+// export default connect(mapStateToProps, mapDispatchToProps)(App);
