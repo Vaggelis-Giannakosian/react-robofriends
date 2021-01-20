@@ -12,4 +12,4 @@ const SearchBox = ({searchChange}) => {
 }
 
 
-export default SearchBox
+export default React.memo(SearchBox);

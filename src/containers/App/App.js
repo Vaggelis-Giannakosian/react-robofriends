@@ -6,7 +6,7 @@ import CardList from "../../components/CardList/CardList";
 import SearchBox from "../../components/SearchBox/SearchBox";
 import Scroll from '../../components/Scroll/Scroll'
 import ErrorBoundry from '../../components/ErrorBoundry'
-
+import Header from '../../components/Header'
 import './App.css'
 import {setSearchField, requestRobots} from "../../actions";
 
@@ -89,7 +89,7 @@ const App = () =>{
 
     return(
         <div className="tc">
-            <h1 className="f2">RoboFriends</h1>
+            <Header></Header>
             <SearchBox searchChange={ onSearchChange }/>
             <Scroll>
                 <ErrorBoundry>
