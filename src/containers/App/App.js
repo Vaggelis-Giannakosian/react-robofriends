@@ -64,7 +64,7 @@ const App = () =>{
     const isPending = useSelector(state => state.requestRobots.isPending)
     const text = useSelector(state => state.searchRobots.searchField)
     const dispatch = useDispatch();
-    const [searchResults, setSearchResults] = useState(robosUsers);
+    const [searchResults, setSearchResults] = useState(null);
 
     const onSearchChange = (e) => {
         dispatch(setSearchField(e.target.value))
@@ -83,7 +83,7 @@ const App = () =>{
         setSearchResults(filteredRobots);
     }, [text,robosUsers])
 
-    if ( isPending || !searchResults.length) {
+    if ( isPending || !searchResults) {
         return (<h1>Loading...</h1>);
     }
 
