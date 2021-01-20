@@ -19,7 +19,7 @@
     }
   ],
   "scope": "/",
-  "start_url": "/react-robofriends?source=pwa",
+  "start_url": "/react-robofriends/?source=pwa",
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff"
