@@ -18,8 +18,7 @@
       "sizes": "512x512"
     }
   ],
-  "scope": "/react-robofriends/",
-  "start_url": "/react-robofriends/?source=pwa",
+  "start_url": "./index.html/?source=pwa",
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff"
