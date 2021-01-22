@@ -89,7 +89,7 @@ const App = () =>{
 
     return(
         <div className="tc">
-            <Header></Header>
+            <Header/>
             <SearchBox searchChange={ onSearchChange }/>
             <Scroll>
                 <ErrorBoundry>

@@ -1,0 +1,301 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test CardList 1`] = `
+<CardList
+  robots={
+    Array [
+      Object {
+        "email": "Sincere@april.biz",
+        "id": 1,
+        "name": "Leanne Graham",
+        "username": "Bret",
+      },
+      Object {
+        "email": "Shanna@melissa.tv",
+        "id": 2,
+        "name": "Ervin Howell",
+        "username": "Antonette",
+      },
+      Object {
+        "email": "Nathan@yesenia.net",
+        "id": 3,
+        "name": "Clementine Bauch",
+        "username": "Samantha",
+      },
+      Object {
+        "email": "Julianne.OConner@kory.org",
+        "id": 4,
+        "name": "Patricia Lebsack",
+        "username": "Karianne",
+      },
+      Object {
+        "email": "Lucio_Hettinger@annie.ca",
+        "id": 5,
+        "name": "Chelsey Dietrich",
+        "username": "Kamren",
+      },
+      Object {
+        "email": "Karley_Dach@jasper.info",
+        "id": 6,
+        "name": "Mrs. Dennis Schulist",
+        "username": "Leopoldo_Corkery",
+      },
+      Object {
+        "email": "Telly.Hoeger@billy.biz",
+        "id": 7,
+        "name": "Kurtis Weissnat",
+        "username": "Elwyn.Skiles",
+      },
+      Object {
+        "email": "Sherwood@rosamond.me",
+        "id": 8,
+        "name": "Nicholas Runolfsdottir V",
+        "username": "Maxime_Nienow",
+      },
+      Object {
+        "email": "Chaim_McDermott@dana.io",
+        "id": 9,
+        "name": "Glenna Reichert",
+        "username": "Delphine",
+      },
+      Object {
+        "email": "Rey.Padberg@karina.biz",
+        "id": 10,
+        "name": "Clementina DuBuque",
+        "username": "Moriah.Stanton",
+      },
+    ]
+  }
+>
+  <Memo(Card)
+    email="Sincere@april.biz"
+    id={1}
+    key="1"
+    name="Leanne Graham"
+  >
+    <div
+      className="tc bg-light-green dib br3 pa3 ma2 grow bw2 shadow-5"
+    >
+      <img
+        alt="robot"
+        src="https://robohash.org/1?size=200x200"
+      />
+      <div>
+        <h2>
+          Leanne Graham
+        </h2>
+        <p>
+          Sincere@april.biz
+        </p>
+      </div>
+    </div>
+  </Memo(Card)>
+  <Memo(Card)
+    email="Shanna@melissa.tv"
+    id={2}
+    key="2"
+    name="Ervin Howell"
+  >
+    <div
+      className="tc bg-light-green dib br3 pa3 ma2 grow bw2 shadow-5"
+    >
+      <img
+        alt="robot"
+        src="https://robohash.org/2?size=200x200"
+      />
+      <div>
+        <h2>
+          Ervin Howell
+        </h2>
+        <p>
+          Shanna@melissa.tv
+        </p>
+      </div>
+    </div>
+  </Memo(Card)>
+  <Memo(Card)
+    email="Nathan@yesenia.net"
+    id={3}
+    key="3"
+    name="Clementine Bauch"
+  >
+    <div
+      className="tc bg-light-green dib br3 pa3 ma2 grow bw2 shadow-5"
+    >
+      <img
+        alt="robot"
+        src="https://robohash.org/3?size=200x200"
+      />
+      <div>
+        <h2>
+          Clementine Bauch
+        </h2>
+        <p>
+          Nathan@yesenia.net
+        </p>
+      </div>
+    </div>
+  </Memo(Card)>
+  <Memo(Card)
+    email="Julianne.OConner@kory.org"
+    id={4}
+    key="4"
+    name="Patricia Lebsack"
+  >
+    <div
+      className="tc bg-light-green dib br3 pa3 ma2 grow bw2 shadow-5"
+    >
+      <img
+        alt="robot"
+        src="https://robohash.org/4?size=200x200"
+      />
+      <div>
+        <h2>
+          Patricia Lebsack
+        </h2>
+        <p>
+          Julianne.OConner@kory.org
+        </p>
+      </div>
+    </div>
+  </Memo(Card)>
+  <Memo(Card)
+    email="Lucio_Hettinger@annie.ca"
+    id={5}
+    key="5"
+    name="Chelsey Dietrich"
+  >
+    <div
+      className="tc bg-light-green dib br3 pa3 ma2 grow bw2 shadow-5"
+    >
+      <img
+        alt="robot"
+        src="https://robohash.org/5?size=200x200"
+      />
+      <div>
+        <h2>
+          Chelsey Dietrich
+        </h2>
+        <p>
+          Lucio_Hettinger@annie.ca
+        </p>
+      </div>
+    </div>
+  </Memo(Card)>
+  <Memo(Card)
+    email="Karley_Dach@jasper.info"
+    id={6}
+    key="6"
+    name="Mrs. Dennis Schulist"
+  >
+    <div
+      className="tc bg-light-green dib br3 pa3 ma2 grow bw2 shadow-5"
+    >
+      <img
+        alt="robot"
+        src="https://robohash.org/6?size=200x200"
+      />
+      <div>
+        <h2>
+          Mrs. Dennis Schulist
+        </h2>
+        <p>
+          Karley_Dach@jasper.info
+        </p>
+      </div>
+    </div>
+  </Memo(Card)>
+  <Memo(Card)
+    email="Telly.Hoeger@billy.biz"
+    id={7}
+    key="7"
+    name="Kurtis Weissnat"
+  >
+    <div
+      className="tc bg-light-green dib br3 pa3 ma2 grow bw2 shadow-5"
+    >
+      <img
+        alt="robot"
+        src="https://robohash.org/7?size=200x200"
+      />
+      <div>
+        <h2>
+          Kurtis Weissnat
+        </h2>
+        <p>
+          Telly.Hoeger@billy.biz
+        </p>
+      </div>
+    </div>
+  </Memo(Card)>
+  <Memo(Card)
+    email="Sherwood@rosamond.me"
+    id={8}
+    key="8"
+    name="Nicholas Runolfsdottir V"
+  >
+    <div
+      className="tc bg-light-green dib br3 pa3 ma2 grow bw2 shadow-5"
+    >
+      <img
+        alt="robot"
+        src="https://robohash.org/8?size=200x200"
+      />
+      <div>
+        <h2>
+          Nicholas Runolfsdottir V
+        </h2>
+        <p>
+          Sherwood@rosamond.me
+        </p>
+      </div>
+    </div>
+  </Memo(Card)>
+  <Memo(Card)
+    email="Chaim_McDermott@dana.io"
+    id={9}
+    key="9"
+    name="Glenna Reichert"
+  >
+    <div
+      className="tc bg-light-green dib br3 pa3 ma2 grow bw2 shadow-5"
+    >
+      <img
+        alt="robot"
+        src="https://robohash.org/9?size=200x200"
+      />
+      <div>
+        <h2>
+          Glenna Reichert
+        </h2>
+        <p>
+          Chaim_McDermott@dana.io
+        </p>
+      </div>
+    </div>
+  </Memo(Card)>
+  <Memo(Card)
+    email="Rey.Padberg@karina.biz"
+    id={10}
+    key="10"
+    name="Clementina DuBuque"
+  >
+    <div
+      className="tc bg-light-green dib br3 pa3 ma2 grow bw2 shadow-5"
+    >
+      <img
+        alt="robot"
+        src="https://robohash.org/10?size=200x200"
+      />
+      <div>
+        <h2>
+          Clementina DuBuque
+        </h2>
+        <p>
+          Rey.Padberg@karina.biz
+        </p>
+      </div>
+    </div>
+  </Memo(Card)>
+</CardList>
+`;

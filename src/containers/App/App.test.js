@@ -10,12 +10,12 @@ const rootReducer = combineReducers({searchRobots,requestRobots})
 const store = createStore(rootReducer,  applyMiddleware(thunkMiddleware))
 
 it('App',()=>{
-    expect(mount( <Provider store={store}>
-                  <App/>
-              </Provider>).length).toEqual(1)
 
-
-    expect(mount( <Provider store={store}>
+    const mounted = mount( <Provider store={store}>
         <App/>
-    </Provider>)).toMatchSnapshot()
+    </Provider>)
+
+
+    expect(mounted.length).toEqual(1)
+    expect(mounted).toMatchSnapshot()
 })
