@@ -2,13 +2,8 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 // import {connect} from 'react-redux'
-import CardList from "../../components/CardList/CardList";
-import SearchBox from "../../components/SearchBox/SearchBox";
-import Scroll from '../../components/Scroll/Scroll'
-import ErrorBoundry from '../../components/ErrorBoundry'
-import Header from '../../components/Header'
-import './App.css'
 import {setSearchField, requestRobots} from "../../actions";
+import MainPage from "../../components/MainPage/MainPage";
 
 
 /**
@@ -40,15 +35,7 @@ import {setSearchField, requestRobots} from "../../actions";
 //     })
 //
 //     return (
-//         <div className="tc">
-//             <h1 className="f1">RoboFriends</h1>
-//             <SearchBox searchChange={onSearchChange}/>
-//             <Scroll>
-//                 <ErrorBoundry>
-//                     <CardList robots={filterRobots}/>
-//                 </ErrorBoundry>
-//             </Scroll>
-//         </div>
+//      <MainPage searchChange={onSearchChange} robots={ filterRobots } />
 //     );
 // }
 
@@ -88,15 +75,7 @@ const App = () =>{
     }
 
     return(
-        <div className="tc">
-            <Header/>
-            <SearchBox searchChange={ onSearchChange }/>
-            <Scroll>
-                <ErrorBoundry>
-                    <CardList robots={ searchResults }/>
-                </ErrorBoundry>
-            </Scroll>
-        </div>
+        <MainPage searchChange={onSearchChange} robots={ searchResults } />
     );
 }
 export default App;
@@ -153,15 +132,7 @@ export default App;
 //         const filteredRobots = this.filterRobots(robots, searchField);
 //
 //         return (
-//             <div className="tc">
-//                 <h1 className="f1">RoboFriends</h1>
-//                 <SearchBox searchChange={onSearchChange}/>
-//                 <Scroll>
-//                     <ErrorBoundry>
-//                         <CardList robots={filteredRobots}/>
-//                     </ErrorBoundry>
-//                 </Scroll>
-//             </div>
+//              <MainPage searchChange={onSearchChange} robots={ filteredRobots } />
 //         );
 //
 //     }
