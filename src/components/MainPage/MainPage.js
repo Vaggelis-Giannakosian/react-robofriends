@@ -12,7 +12,7 @@ const MainPage = (props) => {
     return (
         <div className="tc">
             <Header/>
-            <SearchBox searchChange={ props.onSearchChange }/>
+            <SearchBox searchChange={ props.searchChange }/>
             <Scroll>
                 <ErrorBoundry>
                     <CardList robots={ props.robots }/>
