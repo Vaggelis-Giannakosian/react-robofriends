@@ -1,7 +1,7 @@
 import * as React from 'react'
 
 interface IScrollProps {
-    children: JSX.Element
+    children?: JSX.Element
 }
 
 const Scroll: React.FC<IScrollProps> = ({children}) =>{
