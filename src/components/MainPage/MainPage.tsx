@@ -14,7 +14,7 @@ interface IProps {
 }
 
 
-const MainPage = (props : IProps) => {
+const MainPage : React.FC<IProps> = (props) => {
 
     return (
         <div className="tc">

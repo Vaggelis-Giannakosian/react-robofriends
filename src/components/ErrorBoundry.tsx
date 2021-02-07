@@ -1,34 +1,34 @@
 import React, {Component, ErrorInfo} from 'react'
 
-interface IAppProps {}
-
-interface IAppState {
-    hasError:boolean
+interface IAppProps {
+    children: JSX.Element
 }
 
-class ErrorBoundry extends Component<IAppProps, IAppState>{
+interface IAppState {
+    hasError: boolean
+}
 
-    constructor(props : IAppProps) {
+class ErrorBoundry extends Component<IAppProps, IAppState> {
+
+    constructor(props: IAppProps) {
         super(props);
 
         this.state = {
-            hasError:false
+            hasError: false
         }
     }
 
-    componentDidCatch(error:Error, errorInfo:ErrorInfo) {
+    componentDidCatch(error: Error, errorInfo: ErrorInfo) {
         this.setState({
-            hasError:true
+            hasError: true
         })
     }
 
-    render() {
-        if (this.state.hasError)
-        {
-            return <h1>Oooops. Something went wrong</h1>;
-        }
+    render(): JSX.Element {
 
-        return this.props.children;
+        return this.state.hasError ?
+            <h1>Oooops. Something went wrong</h1> :
+            this.props.children;
     }
 
 }

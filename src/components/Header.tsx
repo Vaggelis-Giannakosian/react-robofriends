@@ -1,7 +1,7 @@
 import React from 'react'
 
 
-const Header = () =>{
+const Header: React.FC = () =>{
 
     return (
         <h1 className="f2">RoboFriends</h1>

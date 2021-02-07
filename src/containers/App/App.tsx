@@ -53,7 +53,7 @@ export interface IRobot {
     email: string
 }
 
-const App = () => {
+const App : React.FC = () => {
 
     const robosUsers: IRobot[] = useSelector((state: AppState) => state.requestRobots.robots)
     const isPending = useSelector((state: AppState) => state.requestRobots.isPending)
@@ -67,11 +67,11 @@ const App = () => {
         dispatch(setSearchField(e.target.value))
     };
 
-    useEffect(() => {
+    useEffect(() :void => {
         dispatch(requestRobots());
     }, [dispatch])
 
-    useEffect(() => {
+    useEffect(() :void => {
 
         const filteredRobots: IRobot[] = robosUsers.length ?
             robosUsers.filter((robot: IRobot) => robot.name.toLowerCase().includes(text.toLowerCase())) :
