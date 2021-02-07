@@ -1,13 +1,20 @@
 import React from 'react'
 import Header from "../Header";
-import SearchBox from "../SearchBox/SearchBox";
+import SearchBox, {ISearchCallback} from "../SearchBox/SearchBox";
 import Scroll from "../Scroll/Scroll";
 import ErrorBoundry from "../ErrorBoundry";
 import CardList from "../CardList/CardList";
 
 import './MainPage.css'
+import {IRobot} from "../../containers/App/App";
 
-const MainPage = (props) => {
+interface IProps {
+    searchChange: ISearchCallback,
+    robots:  IRobot[]
+}
+
+
+const MainPage = (props : IProps) => {
 
     return (
         <div className="tc">

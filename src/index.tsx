@@ -11,13 +11,14 @@ import App from './containers/App/App'
 import 'tachyons';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 
+declare global {
+    interface Window {
+        __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
+    }
+}
 
 const logger = createLogger();
-const composeEnhancers = typeof window === 'object' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?
-    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
-// Specify extension’s options like name, actionsBlacklist, actionsCreators, serialize...
-        trace: true
-    }) : compose;
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const enhancer = composeEnhancers(
     applyMiddleware(thunkMiddleware, logger),
@@ -35,7 +36,7 @@ ReactDOM.render(
             <App/>
         </Provider>
     </React.StrictMode>,
-    document.getElementById('root')
+    document.getElementById('root') as HTMLElement
 );
 
 // If you want your app to work offline and load faster, you can change
@@ -48,3 +49,4 @@ serviceWorkerRegistration.register();
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+export type AppState = ReturnType<typeof rootReducer>;

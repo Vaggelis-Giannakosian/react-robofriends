@@ -1,10 +1,12 @@
 // import React from "react";
-import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React, {useState, useEffect, ChangeEvent} from 'react';
+import {useSelector, useDispatch} from 'react-redux';
 // import {connect} from 'react-redux'
 import {setSearchField, requestRobots} from "../../actions";
 import MainPage from "../../components/MainPage/MainPage";
-
+import {Dispatch} from "redux";
+import {AppState} from "../../index";
+// import Card from "../../components/card/Card";
 
 /**
  * App Container With local state - function syntax
@@ -45,37 +47,45 @@ import MainPage from "../../components/MainPage/MainPage";
  * @param state
  */
 
-const App = () =>{
+export interface IRobot {
+    id: number,
+    name: string,
+    email: string
+}
 
-    const robosUsers = useSelector(state => state.requestRobots.robots)
-    const isPending = useSelector(state => state.requestRobots.isPending)
-    const text = useSelector(state => state.searchRobots.searchField)
-    const dispatch = useDispatch();
-    const [searchResults, setSearchResults] = useState(null);
+const App = () => {
 
-    const onSearchChange = (e) => {
+    const robosUsers: IRobot[] = useSelector((state: AppState) => state.requestRobots.robots)
+    const isPending = useSelector((state: AppState) => state.requestRobots.isPending)
+    const text = useSelector((state: AppState) => state.searchRobots.searchField)
+    const dispatch : Dispatch<any>  = useDispatch();
+    const [searchResults, setSearchResults] = useState<IRobot[]>([]);
+
+
+
+    const onSearchChange = (e: ChangeEvent<HTMLInputElement>) :void  => {
         dispatch(setSearchField(e.target.value))
     };
 
-    useEffect(() =>  {
+    useEffect(() => {
         dispatch(requestRobots());
     }, [dispatch])
 
     useEffect(() => {
 
-        const filteredRobots = robosUsers.length ?
-            robosUsers.filter(robot =>  robot.name.toLowerCase().includes(text.toLowerCase())) :
+        const filteredRobots: IRobot[] = robosUsers.length ?
+            robosUsers.filter((robot: IRobot) => robot.name.toLowerCase().includes(text.toLowerCase())) :
             [];
 
         setSearchResults(filteredRobots);
-    }, [text,robosUsers])
+    }, [text, robosUsers])
 
-    if ( isPending || !searchResults) {
+    if (isPending || !searchResults) {
         return (<h1>Loading...</h1>);
     }
 
-    return(
-        <MainPage searchChange={onSearchChange} robots={ searchResults } />
+    return (
+        <MainPage searchChange={onSearchChange} robots={searchResults}/>
     );
 }
 export default App;

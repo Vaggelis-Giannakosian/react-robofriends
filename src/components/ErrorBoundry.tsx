@@ -1,10 +1,14 @@
-import React, {Component} from 'react'
+import React, {Component, ErrorInfo} from 'react'
 
+interface IAppProps {}
 
+interface IAppState {
+    hasError:boolean
+}
 
-class ErrorBoundry extends Component{
+class ErrorBoundry extends Component<IAppProps, IAppState>{
 
-    constructor(props) {
+    constructor(props : IAppProps) {
         super(props);
 
         this.state = {
@@ -12,7 +16,7 @@ class ErrorBoundry extends Component{
         }
     }
 
-    componentDidCatch(error, errorInfo) {
+    componentDidCatch(error:Error, errorInfo:ErrorInfo) {
         this.setState({
             hasError:true
         })
