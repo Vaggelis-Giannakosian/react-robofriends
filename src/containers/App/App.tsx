@@ -1,11 +1,11 @@
 // import React from "react";
-import React, {useState, useEffect, ChangeEvent} from 'react';
-import {useSelector, useDispatch} from 'react-redux';
+import React, { useState, useEffect, ChangeEvent } from "react";
+import { useSelector, useDispatch } from "react-redux";
 // import {connect} from 'react-redux'
-import {setSearchField, requestRobots} from "../../actions";
+import { setSearchField, requestRobots } from "../../actions";
 import MainPage from "../../components/MainPage/MainPage";
-import {Dispatch} from "redux";
-import {AppState} from "../../index";
+import { Dispatch } from "redux";
+import { AppState } from "../../index";
 // import Card from "../../components/card/Card";
 
 /**
@@ -41,55 +41,53 @@ import {AppState} from "../../index";
 //     );
 // }
 
-
 /**
  * App container with redux store - function syntax
  * @param state
  */
 
 export interface IRobot {
-    id: number,
-    name: string,
-    email: string
+  id: number;
+  name: string;
+  email: string;
 }
 
-const App : React.FC = () => {
+const App: React.FC = () => {
+  const robosUsers: IRobot[] = useSelector(
+    (state: AppState) => state.requestRobots.robots
+  );
+  const isPending = useSelector(
+    (state: AppState) => state.requestRobots.isPending
+  );
+  const text = useSelector((state: AppState) => state.searchRobots.searchField);
+  const dispatch: Dispatch<any> = useDispatch();
+  const [searchResults, setSearchResults] = useState<IRobot[]>([]);
 
-    const robosUsers: IRobot[] = useSelector((state: AppState) => state.requestRobots.robots)
-    const isPending = useSelector((state: AppState) => state.requestRobots.isPending)
-    const text = useSelector((state: AppState) => state.searchRobots.searchField)
-    const dispatch : Dispatch<any>  = useDispatch();
-    const [searchResults, setSearchResults] = useState<IRobot[]>([]);
+  const onSearchChange = (e: ChangeEvent<HTMLInputElement>): void => {
+    dispatch(setSearchField(e.target.value));
+  };
 
+  useEffect((): void => {
+    dispatch(requestRobots());
+  }, [dispatch]);
 
+  useEffect((): void => {
+    const filteredRobots: IRobot[] = robosUsers.length
+      ? robosUsers.filter((robot: IRobot) =>
+          robot.name.toLowerCase().includes(text.toLowerCase())
+        )
+      : [];
 
-    const onSearchChange = (e: ChangeEvent<HTMLInputElement>) :void  => {
-        dispatch(setSearchField(e.target.value))
-    };
+    setSearchResults(filteredRobots);
+  }, [text, robosUsers]);
 
-    useEffect(() :void => {
-        dispatch(requestRobots());
-    }, [dispatch])
+  if (isPending || !searchResults) {
+    return <h1>Loading...</h1>;
+  }
 
-    useEffect(() :void => {
-
-        const filteredRobots: IRobot[] = robosUsers.length ?
-            robosUsers.filter((robot: IRobot) => robot.name.toLowerCase().includes(text.toLowerCase())) :
-            [];
-
-        setSearchResults(filteredRobots);
-    }, [text, robosUsers])
-
-    if (isPending || !searchResults) {
-        return (<h1>Loading...</h1>);
-    }
-
-    return (
-        <MainPage searchChange={onSearchChange} robots={searchResults}/>
-    );
-}
+  return <MainPage searchChange={onSearchChange} robots={searchResults} />;
+};
 export default App;
-
 
 /**
  * App container With redux store - class syntax
