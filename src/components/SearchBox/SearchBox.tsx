@@ -9,7 +9,7 @@ const SearchBox: React.FC<{searchChange:ISearchCallback}> = ({searchChange}) => 
                    aria-label="Search Robots"
                    type="search"
                    onChange={searchChange}
-                   placeholder="search robots "/>
+                   placeholder="search for robots "/>
         </div>
     );
 }
